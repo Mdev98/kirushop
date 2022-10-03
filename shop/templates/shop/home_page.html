@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Welcome to Kiru Shop</h1>
+    {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">Déconnexion</a>
+    {% else %}
+        <a href="{% url 'login'%}">Se connecter</a>
+    {% endif %}
+    <a href="{% url 'product-list' %}">List products</a>
+{% endblock%}

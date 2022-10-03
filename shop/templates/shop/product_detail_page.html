@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div>
+        <h3>{{product.title}}</h3>
+        <p>
+            <img src="{{ product.preview }}" alt="" style="width: 200px;"><br>
+            {% for image in product.image_set.all %}
+                <img src="{{ image.imageUrl }}" alt="" style="width: 60px;">
+            {% endfor %}
+        </p>
+        <p>
+            <span>{{product.price}}</span>
+        </p>
+
+
+        <form action="{% url 'cart' %}" method="POST">
+            {% csrf_token %}
+
+            <input type="hidden" value="{{product.id}}" name="product_id">
+            <p>
+                <select name="size">
+                    <option>Choose your size</option>
+                    {% for size in product.size.all %}
+                        <option value="{{size.id}}">{{size}}</option>
+                    {% endfor %}
+                </select>
+            </p>
+
+            <p> 
+                <label for="">quantity</label>
+                <input type="number" name="quantity" id="">
+            </p>
+
+            <button type="submit">Soumettre</button>
+        </form>
+
+    </div>
+{% endblock %}

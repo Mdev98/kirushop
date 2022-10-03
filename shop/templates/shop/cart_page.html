@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+    
+    <ul>
+        {% for item in items %}
+            <li>
+                <span>Product : </span>{{item.item.name}}<br>
+                <span>Price : </span>{{item.item.price}}<br>
+                <span>Quantity : </span>{{item.quantity}}<br>
+                <span>Size : </span>{{item.size}}<br>
+                <strong>TOTAL</strong> : {{item.total_price}}
+            </li>
+            <span>-----------------------</span>
+        {% endfor %}
+    </ul>
+
+    <a href="{% 'order' %}">order</a>
+    
+{% endblock %}

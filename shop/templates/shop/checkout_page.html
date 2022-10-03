@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div>
+        <span>
+            TOTAL CART : {{cart.total_cart_item}}
+        </span>
+            <br>
+        <span>
+            TOTAL ITEM : {{cart.total_cart_item_price}}
+        </span>
+
+        <div>
+            <ul>
+                {% for item in cart.cartitem_set.all %}
+
+                    <li>
+                        <span>Product : </span>{{item.item.name}}<br>
+                        <span>Price : </span>{{item.item.price}}<br>
+                        <span>Quantity : </span>{{item.quantity}}<br>
+                        <span>Size : </span>{{item.size}}<br>
+                        <strong>TOTAL</strong> : {{item.total_price}}<br>
+                        <span>-----------------------</span>
+                    </li>
+                    
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div>
+            <h3>Shipping Details</h3>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <label for="">Adress</label>
+                <input type="text" name="adress" id="">
+
+                <button type="submit">submit</button>
+            </form>
+        </div>
+        
+    </div>
+{% endblock %}

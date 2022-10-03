@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for product in products %}
+        <div>
+            <h3>{{product.title}}</h3>
+            <p>
+                <img src="{{ product.preview }}" alt="" style="width: 200px;">
+            </p>
+            <p>
+                <span>{{product.price}}</span>
+            </p>
+            <button>
+                <a href="{% url 'product-details' product.id %}">Voir plus</a>
+            </button>
+        </div>
+    {% endfor %}
+{% endblock %}
